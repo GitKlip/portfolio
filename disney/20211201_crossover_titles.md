@@ -82,22 +82,15 @@ The approach is to refactor the sql and databricks notebooks so that the pipelin
 ## Results of Enhancements
 
 #### Runtime Improvements
-In the `BeforeAndAfter` tab in the [excel workbook](./bigQueries-2021001-20211101.xlsx) is a table showing the detailed decreases in runtimes with the new process.  Avg Runtime Per Title went from 77s to 3s. Here is the summary that shows a 27X improvement. 
 
-| Measure                       | Value     |
-| ---                           | ---       |
-| Countries                      | 22
-| Num Tiltles | 15010 |
-| Original Approx Runtime (min) | 19170 |
-| Original Seconds/Title	 | 76.63 |
-| New Runtime (min) | 700 |
-| New Seconds/Title | 2.80 |
-| Pct Change in seconds/title metric	 | -96.3% |
-| Improvement Factor	 | 27 |
+Context Info:
+* number of countries processed: 22
+* total number of titles (across all countries): 15k
 
-** Note 1440min = 1day
+Metrics:
+* See [slide seven for Mitigation Results](./SnowflakeOptimization-CrossoverTitles.pptx)
 
-#### Snowflake Credits Improvements
+Snowflake Credits Improvements
 - original credits: 10002 credits/month
 - new credits: ~240 credits/month
 - cost per credit: ~$2
