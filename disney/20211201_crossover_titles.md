@@ -24,6 +24,12 @@ example screenshots of the dashboard can be found [here](2_Content%20Engagement%
 ## Problem Statement
 After running the [topBigQueries.sql](../topBigQueries.sql) crossover titles was identified as the most expensive query as demonstrated by the `Oct2021` tab in the [excel workbook](bigQueries-2021001-20211101.xlsx).  The first row identifies the crossover titles queries and that it's total job credits for Oct2021 were 3X of the next largest query. (9725 credits for ~$20k).  We engaged with Lian Jian and Ravi Gupta on the Content Analytics team to understand context and look at a path toward reducing cost.
 
+The key to the `topBigQueries sql` is a regex which parses the sql text.  The purpouse is to group similar queries together. Identifying the 'death by 1000 cuts' problems.  The regex used is
+
+```
+    ,regexp_replace( qh.query_text, '''[^'']*''|[0-9]+|{[^{}]+}', '<value>', 1, 0, 'ims' ) as adj_query_text
+```
+
 ## Technical Components
 1. Databricks Notebooks run on a weekly basis that issue sql queries to snowflake.
    1. parent notebooks contain queries to identify which target titles need a crossover analysis run for a list of countries

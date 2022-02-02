@@ -1,0 +1,563 @@
+Date: Tue, 1 Feb 2022 19:56:52 -0800 (PST)
+Message-ID: <546290930.39919.1643774212484@prod-0.prod.entcnf-prod.svc.cluster.local>
+Subject: Exported From Confluence
+MIME-Version: 1.0
+Content-Type: multipart/related; 
+	boundary="----=_Part_39918_1902443076.1643774212483"
+
+------=_Part_39918_1902443076.1643774212483
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file:///C:/exported.html
+
+<html xmlns:o=3D'urn:schemas-microsoft-com:office:office'
+      xmlns:w=3D'urn:schemas-microsoft-com:office:word'
+      xmlns:v=3D'urn:schemas-microsoft-com:vml'
+      xmlns=3D'urn:w3-org-ns:HTML'>
+<head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title>Snowflake Optimization - Lessons &amp; Tips</title>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:TargetScreenSize>1024x640</o:TargetScreenSize>
+            <o:PixelsPerInch>72</o:PixelsPerInch>
+            <o:AllowPNG/>
+        </o:OfficeDocumentSettings>
+        <w:WordDocument>
+            <w:View>Print</w:View>
+            <w:Zoom>90</w:Zoom>
+            <w:DoNotOptimizeForBrowser/>
+        </w:WordDocument>
+    </xml>
+    <![endif]-->
+    <style>
+                <!--
+        @page Section1 {
+            size: 8.5in 11.0in;
+            margin: 1.0in;
+            mso-header-margin: .5in;
+            mso-footer-margin: .5in;
+            mso-paper-source: 0;
+        }
+
+        table {
+            border: solid 1px;
+            border-collapse: collapse;
+        }
+
+        table td, table th {
+            border: solid 1px;
+            padding: 5px;
+        }
+
+        td {
+            page-break-inside: avoid;
+        }
+
+        tr {
+            page-break-after: avoid;
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        /* Confluence print stylesheet. Common to all themes for print medi=
+a */
+/* Full of !important until we improve batching for print CSS */
+
+@media print {
+    #main {
+        padding-bottom: 1em !important; /* The default padding of 6em is to=
+o much for printouts */
+    }
+
+    body {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        font-size: 10pt;
+        line-height: 1.2;
+    }
+
+    body, #full-height-container, #main, #page, #content, .has-personal-sid=
+ebar #content {
+        background: #fff !important;
+        color: #000 !important;
+        border: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+
+    a, a:link, a:visited, a:focus, a:hover, a:active {
+        color: #000;
+    }
+
+    #content h1,
+    #content h2,
+    #content h3,
+    #content h4,
+    #content h5,
+    #content h6 {
+        font-family: Arial, Helvetica, FreeSans, sans-serif;
+        page-break-after: avoid;
+    }
+
+    pre {
+        font-family: Monaco, "Courier New", monospace;
+    }
+
+    #header,
+    .aui-header-inner,
+    #navigation,
+    #sidebar,
+    .sidebar,
+    #personal-info-sidebar,
+    .ia-fixed-sidebar,
+    .page-actions,
+    .navmenu,
+    .ajs-menu-bar,
+    .noprint,
+    .inline-control-link,
+    .inline-control-link a,
+    a.show-labels-editor,
+    .global-comment-actions,
+    .comment-actions,
+    .quick-comment-container,
+    #addcomment {
+        display: none !important;
+    }
+
+    /* CONF-28544 cannot print multiple pages in IE */
+    #splitter-content {
+        position: relative !important;
+    }
+
+    .comment .date::before {
+        content: none !important; /* remove middot for print view */
+    }
+
+    h1.pagetitle img {
+        height: auto;
+        width: auto;
+    }
+
+    .print-only {
+        display: block;
+    }
+
+    #footer {
+        position: relative !important; /* CONF-17506 Place the footer at en=
+d of the content */
+        margin: 0;
+        padding: 0;
+        background: none;
+        clear: both;
+    }
+
+    #poweredby {
+        border-top: none;
+        background: none;
+    }
+
+    #poweredby li.print-only {
+        display: list-item;
+        font-style: italic;
+    }
+
+    #poweredby li.noprint {
+        display: none;
+    }
+
+    /* no width controls in print */
+    .wiki-content .table-wrap,
+    .wiki-content p,
+    .panel .codeContent,
+    .panel .codeContent pre,
+    .image-wrap {
+        overflow: visible !important;
+    }
+
+    /* TODO - should this work? */
+    #children-section,
+    #comments-section .comment,
+    #comments-section .comment .comment-body,
+    #comments-section .comment .comment-content,
+    #comments-section .comment p {
+        page-break-inside: avoid;
+    }
+
+    #page-children a {
+        text-decoration: none;
+    }
+
+    /**
+     hide twixies
+
+     the specificity here is a hack because print styles
+     are getting loaded before the base styles. */
+    #comments-section.pageSection .section-header,
+    #comments-section.pageSection .section-title,
+    #children-section.pageSection .section-header,
+    #children-section.pageSection .section-title,
+    .children-show-hide {
+        padding-left: 0;
+        margin-left: 0;
+    }
+
+    .children-show-hide.icon {
+        display: none;
+    }
+
+    /* personal sidebar */
+    .has-personal-sidebar #content {
+        margin-right: 0px;
+    }
+
+    .has-personal-sidebar #content .pageSection {
+        margin-right: 0px;
+    }
+
+    .no-print, .no-print * {
+        display: none !important;
+    }
+}
+-->
+    </style>
+</head>
+<body>
+    <h1>Snowflake Optimization - Lessons &amp; Tips</h1>
+    <div class=3D"Section1">
+        <h2 id=3D"SnowflakeOptimizationLessons&amp;Tips-OptimizationApproac=
+hDecisionTree">Optimization Approach Decision Tree</h2>
+<ol>
+<li>First run a job aggregator to identify the following for each query pat=
+tern. identify the 'largest' query that you want to optimize.&nbsp; (see qu=
+ery at bottom of page)
+<ol>
+<li>job_cnt</li>
+<li>total_job_credits_used_compute</li>
+<li>avg_job_credits_used_compute</li>
+<li>total_execution_time_mins</li>
+<li>avg_execution_time_mins</li>
+<li>total_gb_scanned</li>
+<li>avg_gb_scanned</li>
+</ol></li>
+<li>Is the&nbsp;avg_execution_time_mins small (&lt;1min) and the job_count =
+high (1000's)?
+<ol>
+<li>YES: Can the process or query be changed to aggregate or batch the quer=
+ies?
+<ol>
+<li>YES: Optimize using a process change to aggregate the queries. potentia=
+l for large gains.&nbsp; (example: crossover titles)</li>
+<li>NO: look at optimizing the query.&nbsp; expect gains to be small.</li>
+</ol></li>
+<li>NO: Is the&nbsp;avg_execution_time_mins high (&gt;20min) and the job_co=
+unt small (100's)
+<ol>
+<li>YES: look to optimize the sql query, focus on compute heavy operations<=
+/li>
+<li>NO:&nbsp; Is the&nbsp;avg_gb_scanned high (&gt;1TB)
+<ol>
+<li>YES: see if there's a way to reduce table scans. it may require a combi=
+nation of process and query changes. (example: wpnx_assingment_transactions=
+)</li>
+<li>NO: Is the&nbsp;avg_execution_time_mins high (&gt;20min) and the job_co=
+unt large (1000's)&nbsp;
+<ol>
+<li>YES: try looking at both sql optimization and process optimization</li>
+<li>NO: look a little closer at the process/query and walk the tree again</=
+li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol></li>
+</ol>
+<p><br></p>
+<h2 id=3D"SnowflakeOptimizationLessons&amp;Tips-ThoughtsonOptimizingDataFlo=
+wProcess">Thoughts on Optimizing Data Flow Process</h2>
+<p>Thinking of the ETL pipeline that provides the data to your sql and the =
+transform process your query may be performing.</p>
+<ol>
+<li><strong>Environment</strong>
+<ol>
+<li>evaluate the use of DSS_DEV vs DSS_PROD. They are NOT currently configu=
+red per typical software engineering practices.
+<ol>
+<li>today, "dss_prod" is the catalog intended for use with "scheduled" jobs=
+</li>
+<li>today, everything in "dss_prod" is copied to "dss_dev", and "dss_int" a=
+nd "dss_qa" unless its on a block list</li>
+<li>today,&nbsp; this means you cannot just work in dss_dev and then switch=
+ to dss_prod when you're ready. Instead you have to rename each and every t=
+able that would be overwritten by the production version of the job.
+<ol>
+<li><em><strong>There may be was around this.&nbsp; need to discuss.</stron=
+g></em></li>
+</ol></li>
+</ol></li>
+</ol></li>
+<li><strong>Performance Tracking</strong>
+<ol>
+<li>use a query_tag for all SQL functions executed. (the notebook name is a=
+ good value) This makes it easier to analyze the job later
+<ol>
+<li>for databricks notebook: add 'query_tag' key to the credentials/connect=
+ion dictionary</li>
+</ol></li>
+<li><span style=3D"letter-spacing: 0.0px;">use the query_tag's and profile =
+the complete job to better understand where resources are spent</span></li>
+</ol></li>
+<li><strong>Data Load Speed</strong> (ability to load massive volumes of da=
+ta as quickly as possible)
+<ol>
+<li><span>&nbsp;Avoid Scanning Files: use 'copy into' statements to read fi=
+les from a stage</span>
+<ol>
+<li>slowest: scan entire stage</li>
+<li>most flexible: limit within directory</li>
+<li>fastest: a named file</li>
+</ol></li>
+<li>Warehouse sizing: choose appropriate size for the Virtual Warehouse</li=
+>
+<li>File Sizing:
+<ol>
+<li>break up single large file (&gt;100MB) into many smaller (~100MB) files=
+ to make use of Snowflake=E2=80=99s automatic parallel execution.</li>
+<li>merge lots of small files (&lt;10MB) into larger files (~100MB)</li>
+</ol></li>
+<li>Loading: Use a temporary table to handle bulk data.</li>
+</ol></li>
+<li><span><strong>Data Transformation Performance</strong> (</span>ability =
+to maximize throughput, and rapidly transform the raw data into a form suit=
+able for queries)
+<ol>
+<li>use "transient" tables in Snowflake for intermediate results, they're l=
+ighter in weight</li>
+<li><span style=3D"letter-spacing: 0.0px;">if queries are sequential total =
+time is slow, so see if queries can be processed in parallel instead of seq=
+uentially.&nbsp;</span>investigate multi-cluster warehouse to scale out</li=
+>
+<li>if you have a massive table you need to aggregate, see if you can do it=
+ incrementally using a 'MERGE' statement. It's expensive, but less expensiv=
+e than processing the entire dataset (example: weaponX assignment transacti=
+ons daily summary)</li>
+</ol></li>
+<li><strong style=3D"letter-spacing: 0.0px;">Query Orchestration using Data=
+bricks/Spark</strong>
+<ol>
+<li>use Repos, and rename the directory to be that of the branch you're wor=
+king on OR that you want to deploy to</li>
+<li>use API to have Databricks refresh a Repo from Github upon merge of a P=
+ull Request</li>
+<li>try not to convert dataframes from Spark into Pandas</li>
+<li>when you have to work in Pandas Dataframes, use the <a href=3D"https://=
+docs.databricks.com/spark/latest/spark-sql/pandas-function-apis.html#groupe=
+d-map" class=3D"external-link" rel=3D"nofollow">applyInPandas(UDF) techniqu=
+e</a>
+<ol>
+<li>for even more data efficiency than applyInPandas, use the <a href=3D"ht=
+tps://docs.databricks.com/spark/latest/spark-sql/pandas-function-apis.html#=
+map" class=3D"external-link" rel=3D"nofollow">mapInPandas(UDF) technique</a=
+></li>
+</ol></li>
+<li>you<span>&nbsp;</span><strong>can</strong><span>&nbsp;</span>use Execut=
+ors to distribute work - but only external work, like execution of Snowflak=
+e queries.</li>
+</ol></li>
+</ol>
+<h2 id=3D"SnowflakeOptimizationLessons&amp;Tips-ThoughtsonOptimizingQueries=
+">Thoughts on Optimizing Queries</h2>
+<p>Which aims to minimize the latency of each query and deliver results to =
+business intelligence users as fast as possible.</p>
+<ol>
+<li><strong style=3D"letter-spacing: 0.0px;">Identify Bottlenecks</strong><=
+br>
+<ol>
+<li><span style=3D"letter-spacing: 0.0px;">analyze with Query Profile UI (<=
+/span><a href=3D"https://docs.snowflake.com/en/user-guide/ui-query-profile.=
+html" style=3D"letter-spacing: 0.0px;" class=3D"external-link" rel=3D"nofol=
+low">https://docs.snowflake.com/en/user-guide/ui-query-profile.html</a><spa=
+n style=3D"letter-spacing: 0.0px;">)</span></li>
+<li>see query at bottom of page and pay attention to the various metrics it=
+ gives.&nbsp; Will give you some ideas on where to begin looking for proble=
+ms.</li>
+</ol></li>
+<li><strong>Major Code Smells</strong>
+<ol>
+<li><strong>Table Scans</strong>:&nbsp; A high value of PCT_TABLE_SCAN and =
+a large number of MB_SCANNED indicates potential for poor query performance=
+ on large tables.
+<ol>
+<li>limit columns by specifying columns in SELECT</li>
+<li>add filters in WHERE clause</li>
+<li>consider using a custom cluster key (only if appropriate)</li>
+</ol></li>
+<li><strong>Spilling</strong>:&nbsp; whenever data SPILL_TO_LOCAL or SPILL_=
+TO_REMOTE there's a potentially large sort of operation on a small virtual =
+warehouse.
+<ol>
+<li>Consider moving the query to a bigger warehouse or scaling up the exist=
+ing warehouse if appropriate</li>
+</ol></li>
+<li><span style=3D"letter-spacing: 0.0px;"><strong>Indexing/Partitioning</s=
+trong>: Ensure proper indexing for quick access to the database. </span>
+<ol>
+<li>find out how your table is partitioned (often a 'date'), and use that t=
+o filter data.</li>
+<li>if where condition doesn't result in significant pruning, then table ma=
+y not be&nbsp;partitioned on that column. you may need to add additional cr=
+iteria that is in the&nbsp;partition key</li>
+<li><span style=3D"letter-spacing: 0.0px;">Snowflake does not use indexes. =
+They use a columnar store format and keep statistics on each column, then t=
+hey use partitioning to filter out the data. They do allow users to specify=
+ a SINGLE user defined cluster scheme which serves a similar function.</spa=
+n></li>
+</ol></li>
+</ol></li>
+<li><strong><span style=3D"letter-spacing: 0.0px;">Other Things to Look at<=
+/span></strong>
+<ol>
+<li>Select query:&nbsp;
+<ol>
+<li>Specify the columns in SELECT query instead of 'SELECT *' to avoid extr=
+a fetching load on the database.</li>
+</ol></li>
+<li>Filtering:</li>
+<ol>
+<li>add where clauses to filter data on every select</li>
+<li>if where condition doesn't result in significant pruning, then table ma=
+y not be clustered on that column. you may need to add additional criteria =
+that is in the clustering key</li>
+<li>use of DISTINCT has a code smell that says appropriate filtering or joi=
+ning has not been applied</li>
+<li>when possible, Use the clause WHERE instead of HAVING for primary filte=
+rs.</li>
+</ol>
+<li>Looping queries:
+<ol>
+<li>control structures are used in stored procedures. Loops in query struct=
+ure slows the sequence. Thus, avoid them.</li>
+</ol></li>
+<li>Matching records
+<ol>
+<li>Use EXITS() instead of COUNT(*) for matching if the record exists.</li>
+</ol></li>
+<li>Subqueries:
+<ol>
+<li>A correlated subquery depends on the parent or outer query. Avoid corre=
+lated sub queries as it searches row by row, impacting the speed of SQL que=
+ry processing.</li>
+</ol></li>
+<li>Wildcards:
+<ol>
+<li>Use wildcards (e.g. %xx%) wisely as they search the entire database for=
+ matching results. searching with a known prefix is more efficient (e.g. xx=
+%)</li>
+</ol></li>
+<li>Operators:
+<ol>
+<li>In Where clause, Avoid using a function at left hand side of the operat=
+or. (makes index/clustering unusable)</li>
+</ol></li>
+<li>Unions:
+<ol>
+<li>'UNION ALL' is much FASTER than 'UNION' but does not remove duplicates.=
+</li>
+</ol></li>
+<li>maximize cache usage
+<ol>
+<li>the result cache is completely independent of virtual warehouse, and an=
+y query executed by any user on the account will be served from the result =
+cache, provided the SQL text is exactly the same</li>
+<li>delay auto shutoff. when resumed, the virtual warehouse cache may be cl=
+ean, which means you lose the performance benefits of caching.</li>
+<li>if table &gt;1TB, consider data clustering</li>
+</ol></li>
+</ol></li>
+<li><strong>Common Table Expressions (CTE)</strong>&nbsp;
+<ol>
+<li>A CTE is about as efficient as a SubQuery, either are acceptable</li>
+<li>A Temporary or Transient table is generally more efficient for intermed=
+iate results because it has statistics that the optimizer can use</li>
+<li>consider using a "temporary" or "transient" table to store intermediate=
+ results</li>
+</ol></li>
+</ol>
+<h2 id=3D"SnowflakeOptimizationLessons&amp;Tips-Resources"><span style=3D"l=
+etter-spacing: 0.0px;">Resources</span></h2>
+<ul>
+<li><a href=3D"https://medium.com/@jryan999/top-3-snowflake-performance-tun=
+ing-tactics-894c573731d2" class=3D"external-link" rel=3D"nofollow">https://=
+medium.com/@jryan999/top-3-snowflake-performance-tuning-tactics-894c573731d=
+2</a></li>
+<li><a href=3D"https://docs.snowflake.com/en/user-guide/ui-query-profile.ht=
+ml" class=3D"external-link" rel=3D"nofollow">https://docs.snowflake.com/en/=
+user-guide/ui-query-profile.html</a></li>
+<li><a href=3D"https://www.mantralabsglobal.com/blog/sql-query-optimization=
+-tips/" class=3D"external-link" rel=3D"nofollow">https://www.mantralabsglob=
+al.com/blog/sql-query-optimization-tips/</a></li>
+<li><a href=3D"https://senturus.com/blog/snowflake-7-tips-for-cost-effectiv=
+e-performance/" class=3D"external-link" rel=3D"nofollow">https://senturus.c=
+om/blog/snowflake-7-tips-for-cost-effective-performance/</a></li>
+</ul>
+<h2 id=3D"SnowflakeOptimizationLessons&amp;Tips-SnowflakeJobAggregationProf=
+ilerQuery">Snowflake Job Aggregation Profiler Query</h2>
+<blockquote>
+<p>-- How to run:<br>-- Account: <a href=3D"http://hulux.snowflakecomputing=
+.com/" class=3D"external-link" rel=3D"nofollow">hulux.snowflakecomputing.co=
+m/</a><br>-- Role: DS_BASIC<br>-- Warehouse: DS_REGULAR<br>-- Database: CHA=
+RGEBACKS<br>-- Schema: INTEGRATION</p>
+<p>-- aggregate job credits at role and user level</p>
+<p>-- inclusive of start date, exclusive of end date<br>set l_start_dt =3D =
+to_timestamp( '01/01/2022', 'mm/dd/yyyy' );<br>set l_end_dt =3D to_timestam=
+p( '02/01/2022', 'mm/dd/yyyy' );<br>-- aggregate job credits at role and us=
+er level<br>with l_job_cost as<br>(<br>-- reconsolidate into 1 row per quer=
+y id<br>select<br>dw_query_history_shk<br>,start_time<br>,sum( job_credits_=
+used_compute ) as job_credits_used_compute<br>from<br>chargebacks.integrati=
+on.cb_job_credits_s<br>where<br>start_time &gt;=3D $l_start_dt<br>and start=
+_time &lt; $l_end_dt<br>group by<br>1,2<br>)<br>select<br>top 200<br>qh.acc=
+ount_name<br>,regexp_replace( qh.query_text, '''[^'']*''|[0-9]+|{[^{}]+}', =
+'&lt;value&gt;', 1, 0, 'ims' ) as adj_query_text<br>,qh.user_name<br>,qh.ro=
+le_name<br>,qh.warehouse_name<br>,any_value( object_construct( 'query_id', =
+qh.query_id<br>,'query_text', qh.query_text<br>,'query_tag', qh.query_tag<b=
+r>,'warehouse_name', qh.warehouse_name<br>,'start_time', qh.start_time<br>,=
+'end_time', qh.end_time<br>,'credits_used', cjcs.job_credits_used_compute<b=
+r>)<br>) as sample_job<br>,min(qh.start_time) as min_start<br>,max(qh.start=
+_time) as max_start</p>
+<p>,count( distinct qh.dw_query_history_shk ) as job_cnt<br>,sum( cjcs.job_=
+credits_used_compute ) as total_job_credits_used_compute<br>,avg( cjcs.job_=
+credits_used_compute ) as avg_job_credits_used_compute<br>,round( sum( qh.e=
+xecution_time ) / 1000 / 60, 2 ) as total_execution_time_mins<br>,round( av=
+g( qh.execution_time ) / 1000 / 60, 2 ) as avg_execution_time_mins<br>,roun=
+d( sum( qh.bytes_scanned ) / power( 1024, 3 ), 2 ) as total_gb_scanned<br>,=
+round( avg( qh.bytes_scanned ) / power( 1024, 3 ), 2 ) as avg_gb_scanned</p=
+>
+<p>from<br>l_job_cost cjcs<br>join chargebacks.raw.query_history qh on qh.d=
+w_query_history_shk =3D cjcs.dw_query_history_shk<br>where<br>-- cjcs<br>cj=
+cs.start_time &gt;=3D $l_start_dt<br>and cjcs.start_time &lt; $l_end_dt<br>=
+-- qh<br>and qh.start_time &gt;=3D $l_start_dt<br>and qh.start_time &lt; $l=
+_end_dt<br>and qh.account_name in ('DISNEYSTREAMING', 'HULUX')<br>and qh.wa=
+rehouse_name in ('CUST_MODEL_ETL_WH', 'DISNEY_PLUS_ETL_WH_LARGE', 'DS_REGUL=
+AR', 'DS_POWER', 'DPLUS_ANALYTICS_PROD_WH')<br>// and qh.database_name like=
+ '%_PROD'<br>group by<br>1,2,3,4,5<br>order by<br>total_job_credits_used_co=
+mpute desc nulls last, job_cnt desc nulls last;</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<h2 id=3D"SnowflakeOptimizationLessons&amp;Tips-QueryTagExamples">Query Tag=
+ Examples</h2>
+<blockquote>
+<p>this is where the example will go</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+    </div>
+</body>
+</html>
+------=_Part_39918_1902443076.1643774212483--
